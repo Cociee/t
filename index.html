@@ -1,134 +1,91 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
-    <title>Document</title>
-    <style>
+<html lang="en" xmlns:og="http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no, user-scalable=0"
+/>
 
-body{
-    background-color: white;
-}
-  
-#timer {
-  color: #eeeeee;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Lato', sans-serif;
-  font-size: .7em;
-  letter-spacing: 5px;
-}
+<link rel="stylesheet" href="/styles/style.top.css" />
 
-.days, .hours, .minutes, .seconds {
-  display: inline-block;
-  padding: 20px;
-  width: 100px;
-  border-radius: 5px;
-}
+<link rel="manifest" href="/manifest.json" />
 
-.days {
-  background: #EF2F3C;
-}
+<link
+  rel="icon"
+  type="image/png"
+  href="/favicon-16x16.png"
+  sizes="16x16"
+/>
+<link
+  rel="icon"
+  type="image/png"
+  href="/favicon-32x32.png"
+  sizes="32x32"
+/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-.hours {
-  background: #eeeeee;
-  color: #183059;
-}
+<meta property="og:title" content="Pomofocus" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://pomofocus.io" />
+<meta
+  property="og:image"
+  content="https://pomofocus.io/images/ogimage.png"
+/>
 
-.minutes {
-  background: #276FBF;
-}
+<!-- Saashub -->
+<meta name="saashub-verification" content="292uvoz7flke" />
 
-.seconds {
-  background: #F0A202;
-}
-
-.numbers {
-  font-family: 'Montserrat', sans-serif;
-  color:  #183059;
-  font-size: 4em;
-  text-align: center;
-}
-
-.white {
-  position: absolute;
-  background:  #eeeeee;
-  height: 85px;
-  width: 75px;
-  left: 30%;
-  top: 2%;
-}
-
-.red {
-  position: absolute;
-  background:  #EF2F3C;
-  left: 18%;
-  top: 9%;
-  height: 65px;
-  width: 70px;
- 
-}
-
-.blue {
-  position: absolute;
-  background:  #276FBF;
-  height: 80px;
-  width: 80px;
-  left: 60%;
-  top: 5%;
-
-
-}
-
-
-    </style>
-</head>
-<body>
-    
-<div id="timer">
-
-    <div class="days"> 
-        <div id="days" class="numbers "> </div>days</div> 
-      <div class="hours"> 
-        <div  id="hours" class="numbers"> </div>hours</div> 
-      <div class="minutes"> 
-        <div  id="minutes" class="numbers"> </div>minutes</div> 
-      <div   class="seconds"> 
-        <div id="seconds" class="numbers"> </div>seconds</div> 
+    <title>Pomodoro Timer Online - Pomofocus</title>
+    <meta
+      name="description"
+      content="A simple Pomodoro Timer app that works on a desktop & mobile browser. Pomofucus will help you manage your time and let you focus on any tasks such as study, writing, or coding."
+    />
+  </head>
+  <body ontouchstart="">
+    <main>
+      <div id="target">
+        <div class="spinner__wrapper">
+          <img class="spinner__img" src="/images/icon-white2.png" />
+          <div class="spinner__text">Loading...</div>
+        </div>
       </div>
 
+      <div class="heroimage container">
+        <h1 class="heroimage__title">
+          An online Pomodoro Timer to boost your productivity
+        </h1>
+        <!-- <image src="/images/heroimage2.png" class="heroimage__img"></image> -->
+      </div>
 </div>
 
-</body>
-<script>
-    const year = new Date().getFullYear();
-const myDate = new Date('Feb 1, 2022 00:00:00');
-console.log(myDate);
 
-// countdown
-let timer = setInterval(function() {
+    <script>
+      const timeWorker = new Worker('js/timeWorker.js');
+    </script>
 
-  // get today's date
-  const today = new Date().getTime();
+    <script src="/main.bundle.js"></script>
 
-  // get the difference
-  const diff = myDate - today;
-
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  // display
-  document.getElementById("days").innerHTML=days
-  document.getElementById("hours").innerHTML=hours
-  document.getElementById("minutes").innerHTML=minutes
-  document.getElementById("seconds").innerHTML=seconds
-
-
-
-}, 1);
+<script type="text/javascript">
+  (function() {
+    var bsa_optimize = document.createElement('script');
+    bsa_optimize.type = 'text/javascript';
+    bsa_optimize.async = true;
+    bsa_optimize.src =
+      'https://cdn4.buysellads.net/pub/pomofocus.js?' +
+      (new Date() - (new Date() % 600000));
+    (
+      document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0]
+    ).appendChild(bsa_optimize);
+  })();
 </script>
+
+<script src="https://js.stripe.com/v3" async></script>
+
+
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo93Z6UoLlvljTzZ-KwNufORJWblQbtjs&libraries=places&callback=initMap"></script> -->
+  </body>
 </html>
